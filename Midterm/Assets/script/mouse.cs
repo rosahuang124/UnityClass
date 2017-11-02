@@ -5,31 +5,28 @@ using UnityEngine;
 public class mouse : MonoBehaviour {
 
 	public Transform Target;
-	public float speedToCatchTarget = 0.1f;
+	public float speedToCatchTarget = 1;
 
 
 	Vector3 StartPos;
 	Vector3 EndPos;
 
-	public int maxDist = 6;
-	public int minDist = 2; 
+	public int minDist = 20; 
 
 
 	void Start () {
 
-		StartPos = transform.position;
-		EndPos = Target.position;
+		//StartPos = transform.position;
+//		EndPos = Target.position;
 
 	}
 
 	void Update () {	
+		transform.LookAt (Target);
 
 		if (Vector3.Distance (transform.position, Target.position) >= minDist) {
-			transform.LookAt (Target);
-			transform.position += transform.forward*speedToCatchTarget*Time.deltaTime;
-
-		} 
-
-
+			transform.position = Vector3.Lerp(transform.position, Target.position, Time.deltaTime  );
+		}
+	
 	}
 }

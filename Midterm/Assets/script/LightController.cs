@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour {
 
-    public Color colorA = Color.white;
-    public Color colorB;
-
     private Light light;
-
 
     [Range(0, 1)]
     public float t = 0.01f;
@@ -60,7 +56,7 @@ public class LightController : MonoBehaviour {
         
 		float angleFromLightToTarget = Quaternion.Angle(transform.rotation, endRotation);
         angleFromLightToTarget *= 0.1f;
-        light.color = Color.Lerp(colorA, colorB, 1-angleFromLightToTarget);
+       
 
 		transform.position = new Vector3 (lightTarget.position.x, transform.position.y, lightTarget.position.z);
 
